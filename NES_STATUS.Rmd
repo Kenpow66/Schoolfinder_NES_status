@@ -68,8 +68,10 @@ CIL_subset <- subset(CIL, select = -c(nes_status))
 
 #Pivot longer but keeping the campus ID
 NES_final <- pivot_longer(CIL_subset, 
-                  cols = -entity_id, names_to = "type", values_to = "value" )
+                  cols = -entity_id, names_to = "type", values_to = "value" ) %>%
+                  arrange(entity_id)
 
-write.csv(NES_final, "R:\\Specialist Transfer\\Ken\\GitHub\\Magnet_boolean\\NES_final.csv", row.names = FALSE)
+### save to csv file
 
+write.csv(NES_final,"NES_final.csv", row.names = FALSE)
 ```
